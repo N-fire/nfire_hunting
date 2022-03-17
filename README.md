@@ -2,7 +2,7 @@
 Fivem Hunting script made for ox_inventory WIP
 
 Item to add :
-```
+```lua
 	['carcass_boar'] = {
 		label = 'Boar Carcass',
 		weight = 20000,
