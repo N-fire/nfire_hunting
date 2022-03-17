@@ -49,10 +49,7 @@ AddEventHandler('nfire_hunting:CarryCarcass',function ()
             end
         end
 
-        RequestModel(heaviestCarcass)
-        while not HasModelLoaded(heaviestCarcass) do
-            Wait(0)
-        end
+        lib.requestModel(heaviestCarcass)
         DeleteEntity(carryCarcass)
         carryCarcass = CreatePed(1, heaviestCarcass, GetEntityCoords(PlayerPedId()), GetEntityHeading(PlayerPedId()), true, true)
         SetEntityInvincible(carryCarcass, true)
@@ -73,11 +70,7 @@ end)
 
 function PlayCarryAnim()
     if carryCarcass ~= 0 then
-        RequestAnimDict('missfinale_c2mcs_1')
-
-	    while not HasAnimDictLoaded('missfinale_c2mcs_1') do
-	    	Wait(10)
-	    end
+        lib.requestAnimDict('missfinale_c2mcs_1')
         TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
         while carryCarcass ~= 0 do
             while not IsEntityPlayingAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 49) do
