@@ -1,8 +1,10 @@
 local carryCarcass
 
-local listItemCarcass
+local listItemCarcass= {}
+local CarcassByItem= {}
 for key, value in pairs(Config.carcass) do
     table.insert(listItemCarcass, value)
+    CarcassByItem[value] = key
 end
 
 exports.qtarget:AddTargetModel(Config.animals, {
@@ -22,9 +24,20 @@ exports.qtarget:AddTargetModel(Config.animals, {
 })
 
 AddEventHandler('nfire_hunting:CarryCarcass',function ()
-    if exports.ox_inventory:Search('count', listItemCarcass) > 0 then
-    local inventory = exports.ox_inventory:Search('slots', listItemCarcass)
-    print(json.encode(inventory,{indent = true}))
+    local carcassCount = 0
+    local heaviestCarcass
+    for key, value in pairs(exports.ox_inventory:Search('count', listItemCarcass)) do
+        carcassCount += value
+    end
+    if carcassCount > 0 then
+        local inventory = exports.ox_inventory:Search('slots', listItemCarcass)
+        local weight = 0
+        for key, value in pairs(inventory) do
+            if next(value) ~= nil and value[1].weight > weight then
+                weight = value[1].weight
+                heaviestCarcass = key
+            end
+        end
     else
         print('no carcass')
     end

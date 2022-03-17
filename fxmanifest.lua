@@ -1,4 +1,5 @@
 fx_version 'cerulean'
+lua54 'yes'
 game 'gta5'
 
 name "nfire_hunting"
