@@ -13,13 +13,13 @@ Config.carcass  = {
 
 
 Config.carcassPos  = {
-    [`a_c_boar`]= {0.27, 0.15, 0.63, 0.0, 0.5, 0.0},
-    [`a_c_chickenhawk`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
-    [`a_c_cormorant`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
-    [`a_c_coyote`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
-    [`a_c_deer`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
-    [`a_c_mtlion`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
-    [`a_c_rabbit_01`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0}
+    [`a_c_boar`]=           {xPos = 0.0, yPos = 0.0, zPos = 0.0, xRot = 0.0, yRot = -90.0, zRot = 0.0},
+    [`a_c_chickenhawk`] =   {xPos = 0.15, yPos = 0.2, zPos = 0.45, xRot = 0.0, yRot = -90.0, zRot = 0.0},
+    [`a_c_cormorant`] =     {xPos = 0.15, yPos = 0.2, zPos = 0.4, xRot = 0.0, yRot = -90.0, zRot = 0.0},
+    [`a_c_coyote`] =        {xPos = -0.2, yPos = 0.15, zPos = 0.45, xRot = 0.0, yRot = -90.0, zRot = 0.0},
+    [`a_c_deer`] =          {xPos = -0.4, yPos = 0.15, zPos = 0.7, xRot = 0.0, yRot = -90.0, zRot = 0.0},
+    [`a_c_mtlion`] =        {xPos = -0.25, yPos = 0.0, zPos = 0.6, xRot = 30.0, yRot = -90.0, zRot = 0.0},
+    [`a_c_rabbit_01`] =     {xPos = 0.12, yPos = 0.25, zPos = 0.45, xRot = 0.0, yRot = 90.0, zRot = 0.0},
 }
 
 ----------------------------------------------------------------------------------------------------------------------

@@ -50,14 +50,13 @@ AddEventHandler('nfire_hunting:CarryCarcass',function ()
         carryCarcass = CreatePed(1, heaviestCarcass, GetEntityCoords(PlayerPedId()), GetEntityHeading(PlayerPedId()), true, true)
         SetEntityInvincible(carryCarcass, true)
         SetEntityHealth(carryCarcass, 0)
-        -- SetPedToRagdoll(carryCarcass, 10000, 10000, 0, false, false, false)
-        AttachEntityToEntity(carryCarcass, PlayerPedId(), table.unpack(Config.carcassPos[heaviestCarcass]), false, false, false, false, 2, false)
+        local pos = Config.carcassPos[heaviestCarcass]
+        AttachEntityToEntity(carryCarcass, PlayerPedId(),0, pos.xPos, pos.yPos, pos.zPos, pos.xRot, pos.yRot, pos.zRot, false, false, false, true, 0, true)
         PlayCarryAnim()
     else
         DeleteEntity(carryCarcass)
         carryCarcass = 0
         PlayCarryAnim()
-        print('no carcass')
     end
 end)
 RegisterCommand('carcass', function ()
