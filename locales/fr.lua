@@ -1,3 +1,4 @@
 Locales['fr'] = {
-    ['XXX'] = 'xxx',
+    ['pickup_carcass'] = 'Récupérer la carcasse',
+    ['cant_carry_item'] = 'Vous ne puvez pas porter celà',
 }
