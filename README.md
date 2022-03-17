@@ -12,7 +12,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-		riggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
