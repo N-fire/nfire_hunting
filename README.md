@@ -12,7 +12,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		riggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
@@ -25,7 +25,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
@@ -38,7 +38,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
@@ -51,7 +51,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
@@ -64,7 +64,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
@@ -77,7 +77,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
@@ -90,7 +90,7 @@ Item to add :
                 TriggerEvent('nfire_hunting:CarryCarcass')
             end,
             remove = function()
-				TriggerEvent('nfire_hunting:CarryCarcass')
+		TriggerEvent('nfire_hunting:CarryCarcass')
             end
         }
 	},
