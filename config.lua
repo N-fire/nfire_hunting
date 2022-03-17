@@ -1,8 +1,6 @@
 Config = {}
 Config.Locale = 'en'
 
-Config.animals = {`a_c_boar`,`a_c_chickenhawk`,`a_c_cormorant`,`a_c_coyote`,`a_c_deer`,`a_c_mtlion`,`a_c_rabbit_01`}
-
 Config.carcass  = {
     [`a_c_boar`]= 'carcass_boar',
     [`a_c_chickenhawk`] = 'carcass_hawk',
@@ -12,14 +10,16 @@ Config.carcass  = {
     [`a_c_mtlion`] = 'carcass_mtlion',
     [`a_c_rabbit_01`] = 'carcass_rabbit'
 }
-Config.carcasss  = {
-    'carcass_boar',
-    'carcass_hawk',
-    'carcass_cormorant',
-    'carcass_coyote',
-    'carcass_deer',
-    'carcass_mtlion',
-    'carcass_rabbit'
+
+
+Config.carcassPos  = {
+    [`a_c_boar`]= {0.27, 0.15, 0.63, 0.0, 0.5, 0.0},
+    [`a_c_chickenhawk`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
+    [`a_c_cormorant`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
+    [`a_c_coyote`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
+    [`a_c_deer`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
+    [`a_c_mtlion`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0},
+    [`a_c_rabbit_01`] = {0.27, 0.15, 0.63, 0.5, 0.5, 0.0}
 }
 
 ----------------------------------------------------------------------------------------------------------------------
