@@ -8,7 +8,14 @@ for key, value in pairs(Config.carcass) do
     table.insert(listItemCarcass, value)
     CarcassByItem[value] = key
 end
-
+RegisterNetEvent('ox:playerLoaded')
+AddEventHandler('ox:playerLoaded',function ()
+    TriggerEvent('nfire_hunting:CarryCarcass')
+end)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded',function ()
+    TriggerEvent('nfire_hunting:CarryCarcass')
+end)
 
 exports.qtarget:AddTargetModel(animals, {
 	options = {
