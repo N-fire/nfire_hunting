@@ -21,7 +21,27 @@ exports.qtarget:AddTargetModel(animals, {
 	options = {
 		{
 			action = function (entity)
-                TriggerServerEvent('nfire_hunting:harvestCarcass',NetworkGetNetworkIdFromEntity(entity))
+                exports.ox_inventory:Progress({
+                    duration = 3000,
+                    label = _U('pickup_carcass'),
+                    useWhileDead = false,
+                    canCancel = true,
+                    disable = {
+                        move = true,
+                        car = true,
+                        combat = true,
+                        mouse = false
+                    },
+                    anim = {
+                        dict = 'amb@medic@standing@kneel@idle_a',
+                        clip = 'idle_a',
+                        flag = 1,
+                    },
+                }, function(cancel)
+                    if not cancel then
+                        TriggerServerEvent('nfire_hunting:harvestCarcass',NetworkGetNetworkIdFromEntity(entity))
+                    end
+                end)
             end,
 			icon = "fas fa-paw",
 			label = _U('pickup_carcass'),
@@ -64,7 +84,8 @@ AddEventHandler('nfire_hunting:CarryCarcass',function ()
     end
 end)
 RegisterCommand('carcass', function ()
-    TriggerEvent('nfire_hunting:CarryCarcass')
+    lib.requestAnimDict('amb@medic@standing@kneel@idle_a')
+    TaskPlayAnim(PlayerPedId(), 'amb@medic@standing@kneel@idle_a', 'idle_a', 8.0, -8.0, 10000, 1, 0, false, false, false)
 end)
 
 
