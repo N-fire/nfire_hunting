@@ -1,4 +1,5 @@
 local carryCarcass = 0
+local heaviestCarcass = 0
 
 local animals = {}
 local listItemCarcass= {}
@@ -54,8 +55,9 @@ exports.qtarget:AddTargetModel(animals, {
 })
 
 AddEventHandler('nfire_hunting:CarryCarcass',function ()
+    FreezeEntityPosition(playerPed, false)
+    heaviestCarcass = 0
     local carcassCount = 0
-    local heaviestCarcass
     for key, value in pairs(exports.ox_inventory:Search('count', listItemCarcass)) do
         carcassCount += value
     end
@@ -75,7 +77,7 @@ AddEventHandler('nfire_hunting:CarryCarcass',function ()
         SetEntityInvincible(carryCarcass, true)
         SetEntityHealth(carryCarcass, 0)
         local pos = Config.carcassPos[heaviestCarcass]
-        AttachEntityToEntity(carryCarcass, PlayerPedId(),0, pos.xPos, pos.yPos, pos.zPos, pos.xRot, pos.yRot, pos.zRot, false, false, false, true, 0, true)
+        AttachEntityToEntity(carryCarcass, PlayerPedId(),11816, pos.xPos, pos.yPos, pos.zPos, pos.xRot, pos.yRot, pos.zRot, false, false, true, true, 2, true)
         PlayCarryAnim()
     else
         DeleteEntity(carryCarcass)
@@ -91,17 +93,60 @@ end)
 
 function PlayCarryAnim()
     if carryCarcass ~= 0 then
-        lib.requestAnimDict('missfinale_c2mcs_1')
-        TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
-        while carryCarcass ~= 0 do
-            while not IsEntityPlayingAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 49) do
-                TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
-                Wait(0)
+        if Config.carcassPos[heaviestCarcass].drag then
+            lib.requestAnimDict('combat@drag_ped@')
+            TaskPlayAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 2.0, 2.0, 100000, 1, 0, false, false, false)
+            CustomControl()
+            while carryCarcass ~= 0 do
+                while not IsEntityPlayingAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 1) do
+                    TaskPlayAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 2.0, 2.0, 100000, 1, 0, false, false, false)
+                    Wait(0)
+                end
+                Wait(500)
             end
-            SetPedToRagdoll(carryCarcass, 10000, 10000, 0, false, false, false)
-            Wait(500)
+        else
+            lib.requestAnimDict('missfinale_c2mcs_1')
+            TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
+            while carryCarcass ~= 0 do
+                while not IsEntityPlayingAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 49) do
+                    TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
+                    Wait(0)
+                end
+                Wait(500)
+            end
         end
     else
         ClearPedSecondaryTask(PlayerPedId())
     end
+end
+
+function CustomControl()
+    Citizen.CreateThread(function ()
+        local playerPed = PlayerPedId()
+        local enable = true
+
+        while enable do
+            if IsControlPressed(0, 35) then -- Right
+                FreezeEntityPosition(playerPed, false)
+                SetEntityHeading(playerPed, GetEntityHeading(playerPed)+0.5)
+            elseif IsControlPressed(0, 34) then -- Left
+                FreezeEntityPosition(playerPed, false)
+                SetEntityHeading(playerPed, GetEntityHeading(playerPed)-0.5)
+            elseif IsControlPressed(0, 32) or IsControlPressed(0, 33) then
+                FreezeEntityPosition(playerPed, false)
+            else
+                FreezeEntityPosition(playerPed, true)
+                TaskPlayAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 0.0, 0.0, 1, 2, 7, false, false, false)
+            end
+            Wait(7)
+            if heaviestCarcass ~= 0 then
+                enable = Config.carcassPos[heaviestCarcass].drag
+            else
+                enable = false
+            end
+        end
+        FreezeEntityPosition(playerPed, false)
+        ClearPedSecondaryTask(playerPed)
+        ClearPedTasksImmediately(playerPed)
+    end)
 end
