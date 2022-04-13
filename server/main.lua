@@ -45,10 +45,10 @@ AddEventHandler('nfire_hunting:SellCarcass',function (item)
 end)
 
 
--- lib.addCommand('group.admin', 'giveCarcass', function(source, args)
---     for key, value in pairs(Config.carcass) do
---         exports.ox_inventory:AddItem(source, value, 1, {type = '★☆☆', image =  value..1})
---         exports.ox_inventory:AddItem(source, value, 1, {type = '★★☆', image =  value..2})
---         exports.ox_inventory:AddItem(source, value, 1, {type = '★★★', image =  value..2})
---     end
--- end)
+lib.addCommand('group.admin', 'giveCarcass', function(source, args)
+    for key, value in pairs(Config.carcass) do
+        exports.ox_inventory:AddItem(source, value, 1, {type = '★☆☆', image =  value..1})
+        exports.ox_inventory:AddItem(source, value, 1, {type = '★★☆', image =  value..2})
+        exports.ox_inventory:AddItem(source, value, 1, {type = '★★★', image =  value..3})
+    end
+end)
