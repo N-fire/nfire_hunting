@@ -8,17 +8,19 @@ RegisterNetEvent('nfire_hunting:harvestCarcass')
 AddEventHandler('nfire_hunting:harvestCarcass',function (entityId)
     local entity = NetworkGetEntityFromNetworkId(entityId)
     local weapon = GetPedCauseOfDeath(entity)
+    local item = Config.carcass[GetEntityModel(entity)]
     local grade = '★☆☆'
+    local image =  item..1
     if InTable(Config.goodWeapon, weapon) then
         grade = '★★☆'
+        image =  item..2
         if math.random(10) == 5 then
             grade = '★★★'
+            image =  item..3
         end
     end
-
-    local item = Config.carcass[GetEntityModel(entity)]
     if exports.ox_inventory:CanCarryItem(source, item, 1) and DoesEntityExist(entity) and GetEntityAttachedTo(entity) == 0 then
-        exports.ox_inventory:AddItem(source, item, 1, {type = grade})
+        exports.ox_inventory:AddItem(source, item, 1, {type = grade, image =  image})
         DeleteEntity(entity)
     end
 end)
@@ -41,3 +43,12 @@ AddEventHandler('nfire_hunting:SellCarcass',function (item)
         exports.ox_inventory:AddItem(source, 'money', reward)
     end
 end)
+
+
+-- lib.addCommand('group.admin', 'giveCarcass', function(source, args)
+--     for key, value in pairs(Config.carcass) do
+--         exports.ox_inventory:AddItem(source, value, 1, {type = '★☆☆', image =  value..1})
+--         exports.ox_inventory:AddItem(source, value, 1, {type = '★★☆', image =  value..2})
+--         exports.ox_inventory:AddItem(source, value, 1, {type = '★★★', image =  value..2})
+--     end
+-- end)
