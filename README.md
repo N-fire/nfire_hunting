@@ -6,7 +6,7 @@ Preview : https://youtu.be/1Fzb0yB0jn0
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O87T3LC)
 
 ## Features:
-- nfire_hunting allow the player to hunt animals naturally spawning.
+- Allow the player to hunt animals naturally spawning.
 - Carcass are physically drag/carry.
 - Carcass quality is defined by the type weapon used and have a small chance to be high quality
 
