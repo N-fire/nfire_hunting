@@ -19,9 +19,10 @@ AddEventHandler('esx:playerLoaded',function ()
 end)
 
 exports.qtarget:AddTargetModel(animals, {
-	options = {
-		{
-			action = function (entity)
+    options = {
+        {
+            action = function (entity)
+                TriggerEvent('ox_inventory:disarm')
                 exports.ox_inventory:Progress({
                     duration = 3000,
                     label = _U('pickup_carcass'),
@@ -44,17 +45,18 @@ exports.qtarget:AddTargetModel(animals, {
                     end
                 end)
             end,
-			icon = "fas fa-paw",
-			label = _U('pickup_carcass'),
+            icon = "fas fa-paw",
+            label = _U('pickup_carcass'),
             canInteract = function (entity)
                 return IsEntityDead(entity) and not IsEntityAMissionEntity(entity)
             end
-		},
-	},
-	distance = 2
+        },
+    },
+    distance = 2
 })
 
 AddEventHandler('nfire_hunting:CarryCarcass',function ()
+    TriggerEvent('ox_inventory:disarm')
     FreezeEntityPosition(playerPed, false)
     heaviestCarcass = 0
     local carcassCount = 0

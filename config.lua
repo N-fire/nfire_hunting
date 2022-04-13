@@ -22,6 +22,10 @@ Config.carcassPos  = {
     [`a_c_rabbit_01`] =     {drag = false, xPos = 0.12, yPos = 0.25, zPos = 0.45, xRot = 0.0, yRot = 90.0, zRot = 0.0},
 }
 
+Config.goodWeapon = {
+    `WEAPON_MUSKET`,`WEAPON_SNIPERRIFLE`,`WEAPON_KNIFE`
+}
+
 ----------------------------------------------------------------------------------------------------------------------
 Locales = {}
 
