@@ -79,7 +79,7 @@ AddEventHandler('nfire_hunting:CarryCarcass',function ()
         SetEntityInvincible(carryCarcass, true)
         SetEntityHealth(carryCarcass, 0)
         local pos = Config.carcassPos[heaviestCarcass]
-        AttachEntityToEntity(carryCarcass, PlayerPedId(),11816, pos.xPos, pos.yPos, pos.zPos, pos.xRot, pos.yRot, pos.zRot, false, false, true, true, 2, true)
+        AttachEntityToEntity(carryCarcass, PlayerPedId(),11816, pos.xPos, pos.yPos, pos.zPos, pos.xRot, pos.yRot, pos.zRot, false, false, false, true, 2, true)
         PlayCarryAnim()
     else
         DeleteEntity(carryCarcass)
@@ -192,3 +192,14 @@ exports.qtarget:AddBoxZone("nfire_hunting_sell",vector3(963.34, -2115.39, 31.47)
 		},
 		distance = 2.0
 })
+
+Citizen.CreateThread(function ()
+    blip = AddBlipForCoord(963.34, -2115.39)
+	SetBlipSprite(blip, 141)
+	SetBlipScale(blip, 0.8)
+	SetBlipColour(blip, 43)
+	SetBlipAsShortRange(blip, true)
+	BeginTextCommandSetBlipName('STRING')
+	AddTextComponentString(_U'blip_name')
+	EndTextCommandSetBlipName(blip)
+end)
