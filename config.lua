@@ -2,13 +2,13 @@ Config = {}
 Config.Locale = 'en'
 
 Config.carcass  = {
-    [`a_c_boar`]= 'carcass_boar',
-    [`a_c_chickenhawk`] = 'carcass_hawk',
-    [`a_c_cormorant`] = 'carcass_cormorant',
-    [`a_c_coyote`] = 'carcass_coyote',
-    [`a_c_deer`] = 'carcass_deer',
-    [`a_c_mtlion`] = 'carcass_mtlion',
-    [`a_c_rabbit_01`] = 'carcass_rabbit'
+    [`a_c_boar`]=           'carcass_boar',
+    [`a_c_chickenhawk`] =   'carcass_hawk',
+    [`a_c_cormorant`] =     'carcass_cormorant',
+    [`a_c_coyote`] =        'carcass_coyote',
+    [`a_c_deer`] =          'carcass_deer',
+    [`a_c_mtlion`] =        'carcass_mtlion',
+    [`a_c_rabbit_01`] =     'carcass_rabbit'
 }
 
 
@@ -25,6 +25,23 @@ Config.carcassPos  = {
 Config.goodWeapon = {
     `WEAPON_MUSKET`,`WEAPON_SNIPERRIFLE`,`WEAPON_KNIFE`
 }
+
+Config.sellPrice = {
+    ['carcass_boar'] = 1000,
+    ['carcass_hawk'] = 1200,
+    ['carcass_cormorant'] = 600,
+    ['carcass_coyote'] = 300,
+    ['carcass_deer'] = 500,
+    ['carcass_mtlion']= 800,
+    ['carcass_rabbit'] = 400
+}
+
+Config.gradeMultiplier = {
+    ['★☆☆'] = 0.5, -- not killed by a goodWeapon
+    ['★★☆'] = 1.0, -- killed by a goodWeapon
+    ['★★★'] = 2.0  -- 1/10 chance if killed by a goodWeapon
+}
+
 
 ----------------------------------------------------------------------------------------------------------------------
 Locales = {}
