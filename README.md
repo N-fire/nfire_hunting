@@ -1,5 +1,30 @@
 # nfire_hunting
-Fivem Hunting script made for ox_inventory WIP
+Fivem Hunting script made for ox_inventory WIP (should work, but expect some change in the future)
+
+Preview : https://youtu.be/1Fzb0yB0jn0
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O87T3LC)
+
+## Features:
+- nfire_hunting allow the player to hunt animals naturally spawning.
+- Carcass are physically drag/carry.
+- Carcass quality is defined by the type weapon used and have a small chance to be high quality
+
+### TODO:
+- Clean Animation
+- Add anti-farm (force player to not stay on the same animal spawn point)
+- Optimisation
+#### Maybe:
+- Add poaching
+- sell point owned by player
+- hunting card
+
+## Dependencies:
+ox_inventory : https://www.github.com/overextended/ox_inventory/releases/latest
+
+ox_lib : https://github.com/overextended/ox_lib/releases/latest
+
+qtarget : https://github.com/overextended/qtarget/releases/latest
 
 Item to add :
 ```lua
@@ -95,3 +120,23 @@ Item to add :
         }
 	},
 ```
+
+<br><h2>License</h2>
+<table><tr><td>
+nfire_hunting
+
+Copyright (C) 2021	Nfire <https://github.com/N-fire>
+
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+You should have received a copy of the GNU General Public License along with this program.  
+If not, see <https://www.gnu.org/licenses/gpl-3.0.html>
+</td></tr>
+<tr><td>
+<font align='center'>https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)</font>
+</td></td></table>
