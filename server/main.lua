@@ -31,3 +31,13 @@ function InTable(table, value)
     end
     return false
 end
+
+RegisterNetEvent('nfire_hunting:SellCarcass')
+AddEventHandler('nfire_hunting:SellCarcass',function (item)
+    local itemData = exports.ox_inventory:Search(source,'slots', item)[1]
+    if itemData.count >= 1 then
+        local reward = Config.sellPrice[item] *  Config.gradeMultiplier[itemData.metadata.type]
+        exports.ox_inventory:RemoveItem(source, item, 1, nil, itemData.slot)
+        exports.ox_inventory:AddItem(source, 'money', reward)
+    end
+end)

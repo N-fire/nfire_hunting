@@ -45,7 +45,7 @@ exports.qtarget:AddTargetModel(animals, {
                     end
                 end)
             end,
-            icon = "fas fa-paw",
+            icon = "fa-solid fa-paw",
             label = _U('pickup_carcass'),
             canInteract = function (entity)
                 return IsEntityDead(entity) and not IsEntityAMissionEntity(entity)
@@ -152,3 +152,43 @@ function CustomControl()
         ClearPedTasksImmediately(playerPed)
     end)
 end
+
+
+--------------------- SELL -----------------------------------
+
+exports.qtarget:AddBoxZone("nfire_hunting_sell",vector3(963.34, -2115.39, 31.47), 6.8, 1, {
+    name="nfire_hunting_sell",
+    heading=355,
+    --debugPoly=true,
+    minZ=31.27,
+    maxZ=34.67
+	}, {
+		options = {
+			{
+				action = function ()
+                    exports.ox_inventory:Progress({
+                        duration = 3000,
+                        label = _U('sell_in_progress'),
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            move = true,
+                            car = true,
+                            combat = true,
+                            mouse = false
+                        },
+                    }, function(cancel)
+                        if not cancel then
+                            TriggerServerEvent('nfire_hunting:SellCarcass', Config.carcass[heaviestCarcass])
+                        end
+                    end)
+                end,
+				icon = "fa-solid fa-sack-dollar",
+				label = _U('sell_carcass'),
+                canInteract= function ()
+                    return heaviestCarcass ~= 0
+                end
+			},
+		},
+		distance = 2.0
+})
