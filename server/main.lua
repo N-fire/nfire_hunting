@@ -1,6 +1,7 @@
 lib.versionCheck('N-fire/nfire_hunting')
 if not lib.checkDependency('ox_lib', '2.1.0') then error('You don\'t have latest version of ox_lib') end
 if not lib.checkDependency('ox_inventory', '2.7.4') then error('You don\'t have latest version of ox_inventory') end
+if not lib.checkDependency('qtarget', '2.1.0') then error('You don\'t have latest version of qtarget') end
 
 
 RegisterNetEvent('nfire_hunting:harvestCarcass')
