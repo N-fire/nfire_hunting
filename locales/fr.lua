@@ -4,4 +4,6 @@ Locales['fr'] = {
     ['sell_carcass'] = 'Vendre Carcasse',
     ['sell_in_progress'] = 'Vente en cours ...',
     ['blip_name'] = 'Vente Carcasses',
+    ['too_far'] = 'Vous êtes trop loin de la carcasse',
+    ['stop_farm'] = 'Respecte la biodiversité change d\'endroit',
 }

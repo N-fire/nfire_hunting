@@ -5,7 +5,7 @@ game 'gta5'
 name "nfire_hunting"
 description "Hunting Script made for ox_inventory"
 author "Nfire"
-version "1.0.0"
+version "1.1.0"
 
 dependencies {
 	'/server:5181',

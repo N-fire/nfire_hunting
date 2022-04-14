@@ -1,3 +1,5 @@
+local antifarm = {}
+
 lib.versionCheck('N-fire/nfire_hunting')
 if not lib.checkDependency('ox_lib', '2.1.0') then error('You don\'t have latest version of ox_lib') end
 if not lib.checkDependency('ox_inventory', '2.7.4') then error('You don\'t have latest version of ox_inventory') end
@@ -6,22 +8,32 @@ if not lib.checkDependency('qtarget', '2.1.0') then error('You don\'t have lates
 
 RegisterNetEvent('nfire_hunting:harvestCarcass')
 AddEventHandler('nfire_hunting:harvestCarcass',function (entityId, bone)
+    local playerCoords = GetEntityCoords(GetPlayerPed(source))
     local entity = NetworkGetEntityFromNetworkId(entityId)
-    local weapon = GetPedCauseOfDeath(entity)
-    local item = Config.carcass[GetEntityModel(entity)]
-    local grade = '★☆☆'
-    local image =  item..1
-    if InTable(Config.goodWeapon, weapon) then
-        grade = '★★☆'
-        image =  item..2
-        if InTable(Config.headshotBones[GetEntityModel(entity)],bone) then
-            grade = '★★★'
-            image =  item..3
+    local entityCoords = GetEntityCoords(entity)
+    if #(playerCoords - entityCoords)< 5 then
+        if Antifarm(source, entityCoords) then
+            local weapon = GetPedCauseOfDeath(entity)
+            local item = Config.carcass[GetEntityModel(entity)]
+            local grade = '★☆☆'
+            local image =  item..1
+            if InTable(Config.goodWeapon, weapon) then
+                grade = '★★☆'
+                image =  item..2
+                if InTable(Config.headshotBones[GetEntityModel(entity)],bone) then
+                    grade = '★★★'
+                    image =  item..3
+                end
+            end
+            if exports.ox_inventory:CanCarryItem(source, item, 1) and DoesEntityExist(entity) and GetEntityAttachedTo(entity) == 0 then
+                exports.ox_inventory:AddItem(source, item, 1, {type = grade, image =  image})
+                DeleteEntity(entity)
+            end
+        else
+            TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = _U('stop_farm')})
         end
-    end
-    if exports.ox_inventory:CanCarryItem(source, item, 1) and DoesEntityExist(entity) and GetEntityAttachedTo(entity) == 0 then
-        exports.ox_inventory:AddItem(source, item, 1, {type = grade, image =  image})
-        DeleteEntity(entity)
+    else
+        TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = _U('too_far')})
     end
 end)
 
@@ -45,6 +57,30 @@ AddEventHandler('nfire_hunting:SellCarcass',function (item)
 end)
 
 
+function Antifarm(source,coords)
+    if Config.antiFarm.enable == false then return true end
+
+    local curentTime = os.time()
+    if not next(antifarm) or not next(antifarm[source]) then -- table empty
+        antifarm[source] = {}
+        table.insert(antifarm[source],{time = curentTime, coords = coords, amount= 1})
+        return true
+    end
+    for i = 1, #antifarm[source], 1 do
+        if (curentTime - antifarm[source][i].time) > Config.antiFarm.time then -- delete old table
+            table.remove(antifarm[source], i)
+        elseif #(antifarm[source][i].coords - coords) < Config.antiFarm.size then -- if found table in coord
+            if antifarm[source][i].amount >= Config.antiFarm.maxAmount then -- if amount more than max
+                return false
+            end
+            antifarm[source][i].amount += 1 -- if not amount more than max
+            return true
+        end
+    end
+    table.insert(antifarm[source],{time = curentTime, coords = coords, amount= 1}) -- if no table in coords found
+    return true
+end
+
 -- lib.addCommand('group.admin', 'giveCarcass', function(source, args)
 --     for key, value in pairs(Config.carcass) do
 --         exports.ox_inventory:AddItem(source, value, 1, {type = '★☆☆', image =  value..1})
@@ -53,7 +89,7 @@ end)
 --     end
 -- end)
 
-lib.addCommand('group.admin', 'spawnPed', function(source, args)
-    local playerCoords = GetEntityCoords(GetPlayerPed(source))
-    local entity = CreatePed(0, GetHashKey(args.hash), playerCoords, true, true)
-end,{'hash:string'})
+-- lib.addCommand('group.admin', 'spawnPed', function(source, args)
+--     local playerCoords = GetEntityCoords(GetPlayerPed(source))
+--     local entity = CreatePed(0, GetHashKey(args.hash), playerCoords, true, true)
+-- end,{'hash:string'})

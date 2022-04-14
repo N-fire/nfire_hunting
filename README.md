@@ -10,10 +10,9 @@ Preview : https://youtu.be/1Fzb0yB0jn0
 - Allow the player to hunt animals naturally spawning.
 - Carcass are physically drag/carry.
 - Carcass quality is defined by the type weapon used and if the animal has been headshot
-
+- Anti-farm (force player to not stay on the same animal spawn point)
 ### TODO:
 - Clean Animation
-- Add anti-farm (force player to not stay on the same animal spawn point)
 - Optimisation
 #### Maybe:
 - Add poaching
