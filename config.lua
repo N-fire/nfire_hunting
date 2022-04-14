@@ -39,7 +39,17 @@ Config.sellPrice = {
 Config.gradeMultiplier = {
     ['★☆☆'] = 0.5, -- not killed by a goodWeapon
     ['★★☆'] = 1.0, -- killed by a goodWeapon
-    ['★★★'] = 2.0  -- 1/10 chance if killed by a goodWeapon
+    ['★★★'] = 2.0  -- headshot
+}
+
+Config.headshotBones = {
+    [`a_c_boar`]=           {31086},
+    [`a_c_chickenhawk`] =   {39317},
+    [`a_c_cormorant`] =     {24818},
+    [`a_c_coyote`] =        {31086},
+    [`a_c_deer`] =          {31086},
+    [`a_c_mtlion`] =        {31086},
+    [`a_c_rabbit_01`] =     {31086}
 }
 
 

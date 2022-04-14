@@ -23,6 +23,7 @@ exports.qtarget:AddTargetModel(animals, {
         {
             action = function (entity)
                 TriggerEvent('ox_inventory:disarm')
+                local retval, bone = GetPedLastDamageBone(entity)
                 exports.ox_inventory:Progress({
                     duration = 3000,
                     label = _U('pickup_carcass'),
@@ -41,7 +42,7 @@ exports.qtarget:AddTargetModel(animals, {
                     },
                 }, function(cancel)
                     if not cancel then
-                        TriggerServerEvent('nfire_hunting:harvestCarcass',NetworkGetNetworkIdFromEntity(entity))
+                        TriggerServerEvent('nfire_hunting:harvestCarcass',NetworkGetNetworkIdFromEntity(entity),bone)
                     end
                 end)
             end,

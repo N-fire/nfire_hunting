@@ -5,7 +5,7 @@ if not lib.checkDependency('qtarget', '2.1.0') then error('You don\'t have lates
 
 
 RegisterNetEvent('nfire_hunting:harvestCarcass')
-AddEventHandler('nfire_hunting:harvestCarcass',function (entityId)
+AddEventHandler('nfire_hunting:harvestCarcass',function (entityId, bone)
     local entity = NetworkGetEntityFromNetworkId(entityId)
     local weapon = GetPedCauseOfDeath(entity)
     local item = Config.carcass[GetEntityModel(entity)]
@@ -14,7 +14,7 @@ AddEventHandler('nfire_hunting:harvestCarcass',function (entityId)
     if InTable(Config.goodWeapon, weapon) then
         grade = '★★☆'
         image =  item..2
-        if math.random(10) == 5 then
+        if InTable(Config.headshotBones[GetEntityModel(entity)],bone) then
             grade = '★★★'
             image =  item..3
         end
@@ -52,3 +52,8 @@ end)
 --         exports.ox_inventory:AddItem(source, value, 1, {type = '★★★', image =  value..3})
 --     end
 -- end)
+
+lib.addCommand('group.admin', 'spawnPed', function(source, args)
+    local playerCoords = GetEntityCoords(GetPlayerPed(source))
+    local entity = CreatePed(0, GetHashKey(args.hash), playerCoords, true, true)
+end,{'hash:string'})
