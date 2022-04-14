@@ -74,6 +74,7 @@ function Antifarm(source,coords)
                 return false
             end
             antifarm[source][i].amount += 1 -- if not amount more than max
+            antifarm[source][i].time = curentTime
             return true
         end
     end
