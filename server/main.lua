@@ -59,6 +59,9 @@ end)
 
 function Antifarm(source,coords)
     if Config.antiFarm.enable == false then return true end
+    if Config.antiFarm.personal == false then
+        source = 1
+    end
 
     local curentTime = os.time()
     if not next(antifarm) or not next(antifarm[source]) then -- table empty

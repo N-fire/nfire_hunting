@@ -53,7 +53,7 @@ Config.headshotBones = {
 }
 
 Config.antiFarm = {
-    enable = true, size = 70.0, time = 10 * 60, maxAmount = 3
+    enable = true, size = 70.0, time = 10 * 60, maxAmount = 3, personal = true
 }
 
 
