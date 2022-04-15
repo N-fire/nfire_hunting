@@ -64,7 +64,7 @@ function Antifarm(source,coords)
     end
 
     local curentTime = os.time()
-    if not next(antifarm) or not next(antifarm[source]) then -- table empty
+    if not next(antifarm) or antifarm[source] == nil or not next(antifarm[source]) then -- table empty
         antifarm[source] = {}
         table.insert(antifarm[source],{time = curentTime, coords = coords, amount= 1})
         return true
@@ -97,3 +97,7 @@ end
 --     local playerCoords = GetEntityCoords(GetPlayerPed(source))
 --     local entity = CreatePed(0, GetHashKey(args.hash), playerCoords, true, true)
 -- end,{'hash:string'})
+
+-- lib.addCommand('group.admin', 'printAntifarm', function(source, args)
+--     print(json.encode(antifarm,{indent = true}))
+-- end)
