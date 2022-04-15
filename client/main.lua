@@ -24,6 +24,8 @@ exports.qtarget:AddTargetModel(animals, {
             action = function (entity)
                 TriggerEvent('ox_inventory:disarm')
                 local retval, bone = GetPedLastDamageBone(entity)
+                TaskTurnPedToFaceEntity(PlayerPedId(), entity, -1)
+                Wait(500)
                 exports.ox_inventory:Progress({
                     duration = 3000,
                     label = _U('pickup_carcass'),
