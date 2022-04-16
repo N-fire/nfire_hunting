@@ -1,5 +1,5 @@
 # nfire_hunting
-Fivem Hunting script made for ox_inventory WIP (should work, but expect some change in the future)
+Fivem Hunting script made for ox_inventory
 
 Preview : https://youtu.be/1Fzb0yB0jn0
 ![image](https://user-images.githubusercontent.com/55892717/163342386-b07ff6ee-0316-4f18-a060-727fdc35afed.png)
