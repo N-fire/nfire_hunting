@@ -50,7 +50,16 @@ RegisterNetEvent('nfire_hunting:SellCarcass')
 AddEventHandler('nfire_hunting:SellCarcass',function (item)
     local itemData = exports.ox_inventory:Search(source,'slots', item)[1]
     if itemData.count >= 1 then
-        local reward = Config.sellPrice[item] *  Config.gradeMultiplier[itemData.metadata.type]
+        local reward = Config.sellPrice[item].max * Config.gradeMultiplier[itemData.metadata.type]
+        if Config.degrade and itemData.metadata.durability ~= nil then
+            local currentTime = os.time()
+            local maxTime = itemData.metadata.durability
+            local minTime = maxTime - itemData.metadata.degrade * 60
+            if currentTime >= maxTime then
+                currentTime = maxTime
+            end
+            reward =math.floor(map(currentTime, maxTime, minTime, Config.sellPrice[item].min * Config.gradeMultiplier[itemData.metadata.type], Config.sellPrice[item].max * Config.gradeMultiplier[itemData.metadata.type]))
+        end
         exports.ox_inventory:RemoveItem(source, item, 1, nil, itemData.slot)
         exports.ox_inventory:AddItem(source, 'money', reward)
     end
@@ -85,6 +94,10 @@ function Antifarm(source,coords)
     return true
 end
 
+function map(x, in_min, in_max, out_min, out_max)
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+end
+
 -- lib.addCommand('group.admin', 'giveCarcass', function(source, args)
 --     for key, value in pairs(Config.carcass) do
 --         exports.ox_inventory:AddItem(source, value, 1, {type = '★☆☆', image =  value..1})
@@ -100,4 +113,8 @@ end
 
 -- lib.addCommand('group.admin', 'printAntifarm', function(source, args)
 --     print(json.encode(antifarm,{indent = true}))
+-- end)
+
+-- lib.addCommand('group.admin', 'printInv', function(source, args)
+--     print(json.encode(exports.ox_inventory:Inventory(source).items,{indent = true}))
 -- end)

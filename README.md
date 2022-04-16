@@ -32,6 +32,7 @@ Item to add :
 		label = 'Boar Carcass',
 		weight = 20000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')
@@ -45,6 +46,7 @@ Item to add :
 		label = 'Hawk Carcass',
 		weight = 3000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')
@@ -58,6 +60,7 @@ Item to add :
 		label = 'Cormorant Carcass',
 		weight = 3000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')
@@ -71,6 +74,7 @@ Item to add :
 		label = 'Coyote Carcass',
 		weight = 3000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')
@@ -84,6 +88,7 @@ Item to add :
 		label = 'Deer Carcass',
 		weight = 18000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')
@@ -94,9 +99,10 @@ Item to add :
         }
 	},
 	['carcass_mtlion'] = {
-		label = 'Montain Lion Carcass',
+		label = 'Mountain Lion Carcass',
 		weight = 16000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')
@@ -110,6 +116,7 @@ Item to add :
 		label = 'Rabbit Carcass',
 		weight = 3000,
 		stack = false,
+		degrade = 5*60,
 		client = {
             add = function()
                 TriggerEvent('nfire_hunting:CarryCarcass')

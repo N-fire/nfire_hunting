@@ -27,14 +27,16 @@ Config.goodWeapon = {
 }
 
 Config.sellPrice = {
-    ['carcass_boar'] = 1000,
-    ['carcass_hawk'] = 1200,
-    ['carcass_cormorant'] = 600,
-    ['carcass_coyote'] = 300,
-    ['carcass_deer'] = 500,
-    ['carcass_mtlion']= 800,
-    ['carcass_rabbit'] = 400
+    ['carcass_boar'] =      {min = 150,max = 1000}, -- min = 0 durability   max = 100 durability
+    ['carcass_hawk'] =      {min = 200,max = 1200},
+    ['carcass_cormorant'] = {min = 60,max = 600},
+    ['carcass_coyote'] =    {min = 30,max = 300},
+    ['carcass_deer'] =      {min = 50,max = 500},
+    ['carcass_mtlion'] =    {min = 80,max = 800},
+    ['carcass_rabbit'] =    {min = 40,max = 400}
 }
+
+Config.degrade = true
 
 Config.gradeMultiplier = {
     ['★☆☆'] = 0.5, -- not killed by a goodWeapon
@@ -57,7 +59,7 @@ Config.antiFarm = {
 }
 
 
-----------------------------------------------------------------------------------------------------------------------
+-------------------------------------- DO NOT TOUCH --------------------------------------------------------------------------------
 Locales = {}
 
 function _(str, ...) -- Translate string
