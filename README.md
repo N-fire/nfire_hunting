@@ -11,6 +11,7 @@ Preview : https://youtu.be/1Fzb0yB0jn0
 - Carcass are physically drag/carry.
 - Carcass quality is defined by the type weapon used and if the animal has been headshot
 - Anti-farm (force player to not stay on the same animal spawn point)
+- Carcass degradation (sell price will decrease overtime)
 ### TODO:
 - Clean Animation
 - Optimisation
