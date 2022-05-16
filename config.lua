@@ -1,5 +1,6 @@
 Config = {}
 Config.Locale = 'en'
+Config.debug = false
 
 Config.carcass  = {
     [`a_c_boar`]=           'carcass_boar',
