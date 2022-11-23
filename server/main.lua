@@ -1,3 +1,4 @@
+lib.locale()
 local antifarm = {}
 
 lib.versionCheck('N-fire/nfire_hunting')
@@ -30,10 +31,10 @@ AddEventHandler('nfire_hunting:harvestCarcass',function (entityId, bone)
                 DeleteEntity(entity)
             end
         else
-            TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = _U('stop_farm')})
+            TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = locale('stop_farm')})
         end
     else
-        TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = _U('too_far')})
+        TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = locale('too_far')})
     end
 end)
 

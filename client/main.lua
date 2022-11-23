@@ -1,3 +1,4 @@
+lib.locale()
 local carryCarcass = 0
 local heaviestCarcass = 0
 
@@ -28,7 +29,7 @@ exports.qtarget:AddTargetModel(animals, {
                 Wait(500)
                 exports.ox_inventory:Progress({
                     duration = 3000,
-                    label = _U('pickup_carcass'),
+                    label = locale('pickup_carcass'),
                     useWhileDead = false,
                     canCancel = true,
                     disable = {
@@ -49,7 +50,7 @@ exports.qtarget:AddTargetModel(animals, {
                 end)
             end,
             icon = "fa-solid fa-paw",
-            label = _U('pickup_carcass'),
+            label = locale('pickup_carcass'),
             canInteract = function (entity)
                 return IsEntityDead(entity) and not IsEntityAMissionEntity(entity)
             end
@@ -171,7 +172,7 @@ exports.qtarget:AddBoxZone("nfire_hunting_sell",vector3(963.34, -2115.39, 31.47)
 				action = function ()
                     exports.ox_inventory:Progress({
                         duration = 3000,
-                        label = _U('sell_in_progress'),
+                        label = locale('sell_in_progress'),
                         useWhileDead = false,
                         canCancel = true,
                         disable = {
@@ -187,7 +188,7 @@ exports.qtarget:AddBoxZone("nfire_hunting_sell",vector3(963.34, -2115.39, 31.47)
                     end)
                 end,
 				icon = "fa-solid fa-sack-dollar",
-				label = _U('sell_carcass'),
+				label = locale('sell_carcass'),
                 canInteract= function ()
                     return heaviestCarcass ~= 0
                 end
@@ -203,6 +204,6 @@ Citizen.CreateThread(function ()
 	SetBlipColour(blip, 43)
 	SetBlipAsShortRange(blip, true)
 	BeginTextCommandSetBlipName('STRING')
-	AddTextComponentString(_U'blip_name')
+	AddTextComponentString(locale'blip_name')
 	EndTextCommandSetBlipName(blip)
 end)
